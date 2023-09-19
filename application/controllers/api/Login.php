@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller
+use chriskacerguis\RestServer\RestController;
+
+class Login extends RestController
 {
 
     public function __construct()
@@ -10,16 +12,19 @@ class Login extends CI_Controller
         $this->load->model('Mlogin', 'login');
     }
 
-    public function index()
-    {
-        $data['title'] =  'Marketing-2';
-        $this->load->view('login', $data);
-    }
-
     public function login()
     {
+
+        $this->response([
+            'status' => true,
+            'message' => "uye uye"
+        ], RestController::HTTP);
+
         if ($this->login->logged_id()) {
-            redirect('Dashboard');
+            // already login
+            $this->response([
+                'status' => true,
+            ], RestController::HTTP_OK);
         } else {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -48,10 +53,17 @@ class Login extends CI_Controller
                     );
 
                     $insert = $this->db->insert('x_session', $data);
-                    redirect('Dashboard');
+
+                    // return
+                    $this->response([
+                        'status' => true,
+                    ], RestController::HTTP_OK);
                 }
             } else {
-                redirect(base_url('Login'));
+                // fail
+                $this->response([
+                    'status' => true,
+                ], RestController::HTTP);
             }
         }
     }
@@ -59,6 +71,5 @@ class Login extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy(); // Hapus semua session
-        redirect('Login'); // Redirect ke halaman login
     }
 }
