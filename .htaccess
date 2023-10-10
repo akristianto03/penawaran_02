@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /
+RewriteBase /penawaran_02/
 RewriteCond $1 !^(index\.php|assets|robots\.txt|favicon\.ico)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

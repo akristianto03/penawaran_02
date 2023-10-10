@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -75,13 +75,16 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'27.0.0.1',
-	'username' => 'u417752542_db_marketing',
-	'password' => 'Bumindo2021!',
+	// '27.0.0.1',
+	'localhost',
+	// 'username' => 'u417752542_db_marketing',
+	'username' => 'root',
+	// 'password' => 'Bumindo2021!',
+	'password' => '',
 	'database' => 'u417752542_db_marketing',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
-// 	'dbprefix' => 'pomg_',
+	// 	'dbprefix' => 'pomg_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
