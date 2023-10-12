@@ -9,9 +9,9 @@ class Mtoken extends CI_Model
         return $this->db->where('id', $id)->get('tbl_message_token')->row_array();
     }
 
-    function sendNotification($title, $body)
+    function sendNotification($status, $title, $body)
     {
-        $query = $this->db->query("SELECT * FROM tbl_message_token ORDER BY id DESC");
+        $query = $this->db->query("SELECT * FROM tbl_message_token where status='$status' ORDER BY id DESC");
         foreach ($query->result_array() as $q) {
             $this->sendPush($q['fcm_token'], $title, $body, null, null);
         }

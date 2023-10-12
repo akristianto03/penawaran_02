@@ -68,7 +68,7 @@ class Alat extends CI_Controller
 					$this->session->set_flashdata('msg', 'Tambah Artikel Berhasil');
 					$this->session->set_flashdata('type', 'success');
 
-					$this->token->sendNotification("Menunggu persetujuan", "Penawaran Alat Berat oleh USER111");
+					$this->token->sendNotification("Admin", "Menunggu persetujuan", "Penawaran alat berat untuk " . $this->input->post('nama_proyek') . " oleh " . $this->input->post('marketing'));
 					redirect(base_url('Alat'));
 				} else {
 					$this->session->set_flashdata('title', 'Gagal');
