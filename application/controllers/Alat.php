@@ -1,7 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-// Firebase Cloud Messaging Authorization Key
-define('FCM_AUTH_KEY', 'AAAADLOEZKM:APA91bF_oFRr58S5eMdZeEAWpvsaDVRjXYiUcBYuslSIPLu_bTfFYjVTk3BgRNIDki6Ng2AQCdqWFFyoSmFYl1vJtbyYzhM-TvUlXjVS1Pd7-vime_Dj6mnYXKRFUzUjMT9_i02GCcde');
 
 class Alat extends CI_Controller
 {
