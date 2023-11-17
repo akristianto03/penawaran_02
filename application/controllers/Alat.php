@@ -143,6 +143,7 @@ class Alat extends CI_Controller
 				$this->session->set_flashdata('title', 'Berhasil');
 				$this->session->set_flashdata('msg', 'Berhasil Approve User');
 				$this->session->set_flashdata('type', 'success');
+				$this->token->sendNotification($marketing, "Penawaran disetujui", "Penawaran " . strtolower($produk) . " untuk " . strtolower($nama_proyek) . " telah disetujui");
 				redirect($this->agent->referrer());
 			} else {
 				$this->session->set_flashdata('title', 'Gagal');
@@ -185,6 +186,7 @@ class Alat extends CI_Controller
 				$this->session->set_flashdata('title', 'Berhasil');
 				$this->session->set_flashdata('msg', 'Berhasil Approve User');
 				$this->session->set_flashdata('type', 'success');
+				$this->token->sendNotification($marketing, "Penawaran dibatalkan", "Penawaran " . strtolower($nama_proyek) . " telah dibatalkan");
 				redirect($this->agent->referrer());
 			} else {
 				$this->session->set_flashdata('title', 'Gagal');
@@ -338,6 +340,7 @@ class Alat extends CI_Controller
 	{
 		if ($this->session->userdata('authenticated')) {
 			if ($this->input->post('update_penawaran')) {
+				$this->token->sendNotification("Admin", "Penawaran diubah", "Penawaran " . strtolower($this->input->post('produk')) . " untuk " . strtolower($this->input->post('nama_proyek')) . " oleh " . $this->input->post('marketing') . " telah diubah");
 				if ($_FILES['image']['size'] != NULL) {
 					$this->load->helper('file');
 					$new_name = time() . $_FILES["userfiles"]['name'];
